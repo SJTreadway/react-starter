@@ -54,10 +54,37 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _List = __webpack_require__(159);
+	
+	var _List2 = _interopRequireDefault(_List);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var App = _react2.default.createClass({
-		displayName: 'App'
+		displayName: 'App',
+		getInitialState: function getInitialState() {
+			return {
+				foo: [{ name: 'steven' }, { name: 'fred' }],
+				bar: 'thing'
+			};
+		},
+		handleClick: function handleClick() {
+			this.setState({
+				foo: this.state.foo.concat([this.state.foo.length + 1])
+			});
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'div',
+					{ onClick: this.handleClick },
+					'Foo'
+				),
+				_react2.default.createElement(_List2.default, { users: this.state.foo })
+			);
+		}
 	});
 	
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById("app"));
@@ -19650,6 +19677,35 @@
 	
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var List = _react2.default.createClass({
+		displayName: "List",
+		render: function render() {
+			return _react2.default.createElement(
+				"p",
+				null,
+				this.props.users[0].name
+			);
+		}
+	});
+	
+	exports.default = List;
 
 /***/ }
 /******/ ]);
